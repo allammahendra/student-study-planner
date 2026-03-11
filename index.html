@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Student Study Planner</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<script>
+if(localStorage.getItem("loggedIn")!=="true"){
+window.location.href="login.html";
+}
+</script>
+
+<h1>📚 Student Study Planner</h1>
+
+<p id="welcomeUser"></p>
+
+<button onclick="toggleDarkMode()">🌙 Dark Mode</button>
+<button onclick="logout()">Logout</button>
+
+<div class="container">
+
+<input type="text" id="taskInput" placeholder="Enter study task">
+
+<select id="subjectInput" onchange="checkCustomSubject()">
+<option value="Math">Math</option>
+<option value="Physics">Physics</option>
+<option value="Chemistry">Chemistry</option>
+<option value="DSA">DSA</option>
+<option value="Other">Other</option>
+</select>
+
+<input type="text" id="customSubject" placeholder="Enter subject name" style="display:none;">
+
+<select id="priorityInput">
+<option value="High">High Priority</option>
+<option value="Medium">Medium Priority</option>
+<option value="Low">Low Priority</option>
+</select>
+
+<input type="date" id="dateInput">
+
+<button onclick="addTask()">Add Task</button>
+
+<br><br>
+
+<input type="text" id="searchInput" placeholder="Search tasks..." onkeyup="searchTasks()">
+
+<div class="filters">
+<button onclick="filterTasks('all')">All</button>
+<button onclick="filterTasks('completed')">Completed</button>
+<button onclick="filterTasks('pending')">Pending</button>
+</div>
+
+<div class="stats">
+<p id="totalTasks">Total Tasks: 0</p>
+<p id="completedTasks">Completed: 0</p>
+<p id="pendingTasks">Pending: 0</p>
+</div>
+
+<ul id="taskList"></ul>
+
+<div class="progress-container">
+<div id="progressBar"></div>
+</div>
+
+<p id="progressText"></p>
+
+<h3>Task Completion Chart</h3>
+<canvas id="taskChart"></canvas>
+
+<button onclick="clearAllTasks()">🗑 Clear All Tasks</button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
